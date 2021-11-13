@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Evaluator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        body {
+            background-color: #04101d;
+            color: #fff;
+        }
+        h1{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #061320;
+            padding: 20px
+        }
+        #board{
+            width: 100%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        input:focus{
+            outline:none;
+        }
+        #userInput{
+            background: none;
+            border: none;
+            border-bottom: 1px solid white;
+            width: 300px;
+            margin-top: 50px;
+            color: #fff;
+            height: 30px;
+            font-size: 18px;
+        }
+        .center{
+            font-size: large;
+            text-align: center;
+        }
+        .red{
+            color:crimson;
+        }
+        .green{
+            color:chartreuse;
+        }
+    </style>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <h1><span class="green">PASSWORD</span> <span class="red">EVALUATOR</span></h1>
+    <div id="board"><input placeholder="type any password" type="text" id="userInput">
+    </div>
+    <div class="center">
+        <p class="red" id="one">&check; should be greater than 6 characters</p>
+        <p id="two" class="red">&check; should not contain spaces</p>
+        <p id="three" class="red">&check; should contain atleast 1 special character</p>
+        <p id="four" class="red">&check; should contain atleast 1 lowecase character</p>
+        <p id="five" class="red">&check; should contain atleast 1 numerical character</p>
+        <p id="six" class="red">&check; should contain atleast 1 uppercase character</p>
+    </div>
+</body>
+</html>
