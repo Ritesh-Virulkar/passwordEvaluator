@@ -5,12 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Evaluator</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap');
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-family: 'Roboto', sans-serif;
         }
         body {
             background-color: #04101d;
@@ -21,7 +23,7 @@
             margin: 0 auto;
             text-align: center;
             background-color: #061320;
-            padding: 20px
+            padding: 10px
         }
         #board{
             width: 100%;
@@ -36,29 +38,96 @@
             border: none;
             border-bottom: 1px solid white;
             width: 300px;
-            margin-top: 50px;
+            margin-top: 10px;
             color: #fff;
             height: 30px;
             font-size: 18px;
+            font-weight: 300;
+        }
+        #clipBoard{
+            height: 40px;
+            width: 30px;
+            background: none;
+            color: #fff;
+            border: 1px solid;
+            opacity: 0.8;
+            font-size: 15px;
+        }
+        #status{
+            margin: 5px 0;
+            display: none;
         }
         .center{
             font-size: large;
             text-align: center;
         }
+        .yellow{
+            color: rgb(255, 230, 0);
+        }
         .red{
             color:crimson;
+            font-weight: 300;
+        }
+        .glow{
+            color: rgb(0, 250, 229);
+            font-weight: 500;
         }
         .green{
             color:chartreuse;
+        }
+        .tooltip {
+        position: relative;
+        display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 140px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 150%;
+        left: 50%;
+        margin-left: -75px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        }
+
+        .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
         }
     </style>
     <script src="app.js" defer></script>
 </head>
 <body>
     <h1><span class="green">PASSWORD</span> <span class="red">EVALUATOR</span></h1>
-    <div id="board"><input placeholder="type any password" type="text" id="userInput">
+    <div id="board">
+        <input placeholder="type any password" type="text" id="userInput">
+        <div class="tooltip">
+            <button id="clipBoard" onclick="myFunction()" onmouseout="outFunc()">
+              <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+              <i class="far fa-clipboard"></i>
+            </button>
+        </div>
     </div>
     <div class="center">
+        <p id="status" class="yellow">:( weak password!</p>
         <p class="red" id="one">&check; should be greater than 6 characters</p>
         <p id="two" class="red">&check; should not contain spaces</p>
         <p id="three" class="red">&check; should contain atleast 1 special character</p>
