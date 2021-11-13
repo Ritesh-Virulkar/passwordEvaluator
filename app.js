@@ -5,11 +5,44 @@ const p3 = document.querySelector('#three');
 const p4 = document.querySelector('#four');
 const p5 = document.querySelector('#five');
 const p6 = document.querySelector('#six');
-const specialChar = ['!', '@', '#', '$', '%', '^', '&', '*'];
+const specialChar = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+', '<', '>', '?', '/', ',', '.'];
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const alphaLower = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 const upperCase = alphaLower.map(upper);
 
+function isStatus(password){
+    const status = document.querySelector('#status');
+    if (password.length !== 0 ){
+        status.style.display = 'block';
+        if (password.length > 7) {
+            status.innerText = ';) Nice! strong password!';
+            status.classList.add('glow');
+        }
+        else{
+            status.innerText = ':( weak password!';
+            status.classList.remove('glow');
+        }
+    }
+    else{
+        status.style.display = 'none';
+    }
+    
+}
+
+function myFunction() {
+    var copyText = document.getElementById("userInput");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+    
+    var tooltip = document.getElementById("myTooltip");
+    tooltip.innerHTML = "Copied";
+}
+  
+function outFunc() {
+var tooltip = document.getElementById("myTooltip");
+tooltip.innerHTML = "Copy to clipboard";
+}
 function upper(letter){
     return letter.toUpperCase();
 }
@@ -72,4 +105,5 @@ input.addEventListener('input', () => {
     noSpaces(password);
     lower(password);
     isUpperCase(password);
+    isStatus(password);
 })
